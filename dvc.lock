@@ -46,14 +46,14 @@ stages:
       size: 1888
     params:
       params.yaml:
-        estimators.SVM.C: 1.0
+        estimators.SVM.C: 0.8
     outs:
     - path: report\params.json
-      md5: 9aea015b03721baffde0e9d3786a1356
+      md5: 377d79954614f660e3fad475b2838e50
       size: 18
     - path: report\scores.json
       md5: 51a7792bad1dbe42130c6530e024c355
       size: 23
     - path: saved_models\model.joblib
-      md5: 84a67d3acc2fbc8a089d0bb440b2bbf9
-      size: 8285
+      md5: 1679def73f14f3d1cbefcf4b7c528f81
+      size: 8765

@@ -16,7 +16,8 @@ split_data:
 
 estimators:
   SVM:
-    C: 1.0
+    #C: 1.0
+    C: 0.8
 
 model_dir: saved_models
 
