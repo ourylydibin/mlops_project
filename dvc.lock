@@ -32,3 +32,22 @@ stages:
     - path: data\processed\train_bank.csv
       md5: 7bdaed95d117d9423b8aed13fe090178
       size: 41760
+  train_and_evaluate:
+    cmd: python src\train_and_evaluate.py --config=params.yaml
+    deps:
+    - path: data\processed\test_bank.csv
+      md5: a1da80144866e3e2874a4e823f6e2d95
+      size: 10500
+    - path: data\processed\train_bank.csv
+      md5: 7bdaed95d117d9423b8aed13fe090178
+      size: 41760
+    - path: src\train_and_evaluate.py
+      md5: bd865af0f8db39dd916fa210d2a29cd5
+      size: 1453
+    params:
+      params.yaml:
+        estimators.SVM.C: 1.0
+    outs:
+    - path: saved_models\model.jlb
+      md5: 84a67d3acc2fbc8a089d0bb440b2bbf9
+      size: 8285

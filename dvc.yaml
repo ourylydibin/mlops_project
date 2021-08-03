@@ -17,3 +17,15 @@ stages:
       - data\processed\train_bank.csv
       - data\processed\test_bank.csv
 
+  train_and_evaluate:
+    cmd: python src\train_and_evaluate.py --config=params.yaml
+    deps:
+      - data\processed\train_bank.csv
+      - data\processed\test_bank.csv
+      - src\train_and_evaluate.py
+    params:
+      - estimators.SVM.C
+    outs:
+      - saved_models\model.jlb
+
+
