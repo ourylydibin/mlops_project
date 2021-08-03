@@ -33,12 +33,27 @@ def train_and_evaluate(config_path):
     test_x = test.drop(target, axis=1)
     svm = SVC(C=C, random_state=random_state)
     svm.fit(train_x, train_y.values.ravel())
-    joblib.dump(svm, open(os.path.join(model_dir, "model.jlb"), "wb"))
-    #predicted_note = svm.predict(test_x)
-    #fscore= f1_score(test_y, predicted_note)
 
-    #print(fscore)
-    #print(predicted_note)
+    os.makedirs(model_dir, exist_ok=True)
+    model_path = os.path.join(model_dir, "model.joblib")
+    joblib.dump(svm, model_path)
+    predicted_note = svm.predict(test_x)
+    fscore= f1_score(test_y, predicted_note)
+    print("C={} and score={}".format(C, fscore))
+    scores_files = config["reports"]["scores"]
+    params_files = config["reports"]["params"]
+
+    with open(params_files, "w") as f:
+        params = {
+            "C": C
+        }
+        json.dump(params, f, indent=4)
+
+    with open(scores_files, "w") as f:
+        scores = {
+            "fscore": fscore
+        }
+        json.dump(scores, f, indent=4)
 
 if __name__ == '__main__':
     args = argparse.ArgumentParser()

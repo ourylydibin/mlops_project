@@ -25,7 +25,12 @@ stages:
       - src\train_and_evaluate.py
     params:
       - estimators.SVM.C
+    metrics:
+      - report\scores.json:
+          cache: false
+      - report\params.json:
+          cache: false
     outs:
-      - saved_models\model.jlb
+      - saved_models\model.joblib
 
 
