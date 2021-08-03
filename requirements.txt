@@ -1,0 +1,6 @@
+pytest
+tox
+dvc
+dvc[gdrive]
+pandas
+sklearn
