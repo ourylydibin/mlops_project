@@ -1,0 +1,18 @@
+schema: '2.0'
+stages:
+  load_data:
+    cmd: python src\load_data.py --config=params.yaml
+    deps:
+    - path: data_given\bank.csv
+      md5: 588378a19f074e7299d974545ded1999
+      size: 46442
+    - path: src\get_data.py
+      md5: b406057a1f8618c869fda4b7a240e97e
+      size: 584
+    - path: src\load_data.py
+      md5: d3df614be09145605d3b0b7c0c7e0777
+      size: 479
+    outs:
+    - path: data\raw\bank.csv
+      md5: 42f4ee8080d3ee04ec20ae52a38c68d3
+      size: 52197
